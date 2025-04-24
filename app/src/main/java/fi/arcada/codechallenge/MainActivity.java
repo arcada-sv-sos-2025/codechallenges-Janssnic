@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
     private void calculate(){
         Statistic meanCalc = new Statistic();
         double mean = meanCalc.calcMean(values);
-        myTextView.setText("Mean: " + mean);
+        int windowSize = 3;
+
+        ArrayList<Double> temps = new ArrayList<>(Arrays.asList(17.5, 16.0, 16.5, 15.0, 17.5, 18.0, 15.5, 20.0, 19.5, 16.0));
+        ArrayList<Double> result = meanCalc.glideMeanValue(temps, windowSize); // returns [2.0, 3.0, 4.0]
+        myTextView.setText("SMA: " + result);
+
     }
+
+
+
 }
